@@ -27,66 +27,119 @@
             </div>
             <ul class="menu-items">
                 <li>
-                    <div>
-                        <div id="display-upgrade-clicker">
-                            <script>document.getElementById('display-upgrade-clicker').innerHTML = 'Upgrade clicker cost: ' + localStorage.getItem('upgradeClickerCost')</script>
+                    <div class="li-container">
+                        <div>
+                            <div class="li-title">Nyrkkirauta</div>
+                            <div id="display-upgrade-clicker">
+                                <script>document.getElementById('display-upgrade-clicker').innerHTML = 'Hinta: ' + formatLargeNumber(localStorage.getItem('upgradeClickerCost'))</script>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="upgradeClickerClicked()">Upgrade clicker</button>
+                        <div>
+                            <div id="display-upgrade-clicker-multiplier">
+                                <script>document.getElementById('display-upgrade-clicker-multiplier').innerHTML = localStorage.getItem('multiplier') + 'X lyönti'</script>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-danger" onclick="upgradeClickerClicked()">Päivitä</button>
                     </div>
                 </li>
 
                 <li>
-                    <div>
-                        <div id="display-autoclicker">
-                            <script>document.getElementById('display-autoclicker').innerHTML = 'Autoclicker cost: ' + localStorage.getItem('autoclickerCost')</script>
+                    <div class="li-container">
+                        <div>
+                            <div class="li-title">Kutittelu</div>
+                            <div id="display-autoclicker">
+                                <script>document.getElementById('display-autoclicker').innerHTML = 'Hinta: ' + formatLargeNumber(localStorage.getItem('autoclickerCost'))</script>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="autoclickerClicked()">Autoclicker</button>
+                        <div>
+                            <div id="display-autoclicker-amount">
+                                <script>document.getElementById('display-autoclicker-amount').innerHTML = 'Level: ' + localStorage.getItem('autoclickerAmount')</script>
+                            </div>
+                            <div>CPS: 0,1</div>
+                        </div>
+                        <button type="button" class="btn btn-danger" onclick="autoclickerClicked()">Päivitä</button>
                     </div>
                 </li>
 
                 <li>
-                    <div>
-                        <div id="display-grandma">
-                            <div><script>document.getElementById('display-grandma').innerHTML = 'Grandma cost: ' + localStorage.getItem('grandmaCost')</script></div>
+                    <div class="li-container">
+                        <div>
+                            <div class="li-title">Hipsuttelu</div>
+                            <div id="display-grandma">
+                                <script>document.getElementById('display-grandma').innerHTML = 'Hinta: ' + formatLargeNumber(localStorage.getItem('grandmaCost'))</script>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="grandmaClicked()">Grandma</button>
+                        <div>
+                            <div id="display-grandma-amount">
+                                <script>document.getElementById('display-grandma-amount').innerHTML = 'Level: ' + localStorage.getItem('grandmaAmount')</script>
+                            </div>
+                            <div>CPS: 1</div>
+                        </div>
+                        <button type="button" class="btn btn-danger" onclick="grandmaClicked()">Päivitä</button>
                     </div>
                 </li>
 
                 <li>
-                    <div>
-                        <div id="display-farm">
-                            <script>document.getElementById('display-farm').innerHTML = 'Farm cost: ' + localStorage.getItem('farmCost')</script>
+                    <div class="li-container">
+                        <div>
+                            <div class="li-title">Koskettelu</div>
+                            <div id="display-farm">
+                                <script>document.getElementById('display-farm').innerHTML = 'Hinta: ' + formatLargeNumber(localStorage.getItem('farmCost'))</script>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="farmClicked()">Farm</button>
+                        <div>
+                            <div id="display-farm-amount">
+                                <script>document.getElementById('display-farm-amount').innerHTML = 'Level: ' + localStorage.getItem('farmAmount')</script>
+                            </div>
+                            <div>CPS: 8</div>
+                        </div>
+                        <button type="button" class="btn btn-danger" onclick="farmClicked()">Päivitä</button>
                     </div>
                 </li>
 
                 <li>
-                    <div>
-                        <div id="display-mine">
-                            <script>document.getElementById('display-mine').innerHTML = 'Mine cost: ' + localStorage.getItem('mineCost')</script>
+                    <div class="li-container">
+                        <div>
+                            <div class="li-title">Kopeltelu</div>
+                            <div id="display-mine">
+                                <script>document.getElementById('display-mine').innerHTML = 'Hinta: ' + formatLargeNumber(localStorage.getItem('mineCost'))</script>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="mineClicked()">Mine</button>
+                        <div>
+                            <div id="display-mine-amount">
+                                <script>document.getElementById('display-mine-amount').innerHTML = 'Level: ' + localStorage.getItem('mineAmount')</script>
+                            </div>
+                            <div>CPS: 47</div>
+                        </div>
+                        <button type="button" class="btn btn-danger" onclick="mineClicked()">Päivitä</button>
                     </div>
                 </li>
 
                 <li>
-                    <div>
-                        <div id="display-factory">
-                            <script>document.getElementById('display-factory').innerHTML = 'Factory cost: ' + localStorage.getItem('factoryCost')</script>
+                    <div class="li-container">
+                        <div>
+                            <div class="li-title">Kuristelu</div>
+                            <div id="display-factory">
+                                <script>document.getElementById('display-factory').innerHTML = 'Hinta: ' + formatLargeNumber(localStorage.getItem('factoryCost'))</script>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="factoryClicked()">Factory</button>
+                        <div>
+                            <div id="display-factory-amount">
+                                <script>document.getElementById('display-factory-amount').innerHTML = 'Level: ' + localStorage.getItem('factoryAmount')</script>
+                            </div>
+                            <div>CPS: 260</div>
+                        </div>
+                        <button type="button" class="btn btn-danger" onclick="factoryClicked()">Päivitä</button>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <h1 class="intro-title">Haluatko lyödä Ronjaa?</h1>
+    <h1 class="intro-title">Haluatko läpsiä Ronjaa?</h1>
 
     <div class="cookie-container" align="center">
-        <div class="cookie-counter-title">Ronjaa lyötynä:</div>
+        <div class="cookie-counter-title">Ronjaa läpsittynä:</div>
         <div id="display-cookies">
             <script>document.getElementById('display-cookies').innerHTML = localStorage.getItem('cookieCount')</script>
         </div>
@@ -97,8 +150,22 @@
         <audio id="cookie-clicker-audio"src="SFX 1.mp3" type="mp3/audio"></audio>
         <audio id="cookie-clicker-surprise-audio"src="SFX 1.mp3" type="mp3/audio"></audio>
         <br>
-        <div id="display-cps">Ronjaa sekunnissa: 0</div>
+        <div id="display-cps">Ronjan läpsäisyä sekunnissa: 0</div>
     </div>
+
+    <script>
+        // ChatGPT made a number formatter
+        function formatLargeNumber(number) {
+            const numberString = String(number);
+            const chunks = [];
+
+            for (let i = numberString.length; i > 0; i -= 3) {
+                chunks.unshift(numberString.slice(Math.max(0, i - 3), i));
+            }
+
+            return chunks.join(' ');
+        }
+    </script>
 
 
     <!-- Bootstrap javascript -->

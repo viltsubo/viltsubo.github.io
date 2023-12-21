@@ -49,6 +49,12 @@
 }
 
 
+/* OMAT NAVBAR MUUTOKSET */
+.li-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 
 /* NAVBAR */
@@ -82,7 +88,6 @@
 
 .menu-items li {
   list-style: none;
-  margin-bottom: 0.5rem;
 }
 
 
@@ -162,14 +167,19 @@
     }
   
     .navbar .menu-items li {
-        margin-bottom: 1rem;
-        width: 270px;
+        margin-bottom: 2.5rem;
+        width: 320px;
     }
 
     .navbar .menu-items li div {
-      margin-bottom: .5rem;
+      margin-bottom: 0rem;
       font-size: 1.2rem;
       font-weight: 400;
+    }
+
+    .navbar .menu-items li .li-title {
+        font-weight: 700;
+        font-size: 1.3rem;
     }
   
     .navbar-container input[type="checkbox"]:checked ~ .menu-items {

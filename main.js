@@ -92,7 +92,7 @@ function displayCPS() {
     let displayCPS = document.getElementById('display-cps')
 
     // Calculates the CPS
-    displayCPS.innerHTML = 'Ronjaa sekunnissa: ' + Math.floor( ((autoclickerAmount * autoclickerCPS) + (grandmaAmount * grandmaCPS) + (farmAmount * farmCPS) + (mineAmount * mineCPS) + (factoryAmount * factoryCPS)) * 10) / 10
+    displayCPS.innerHTML = 'Ronjan läpsäisyä sekunnissa: ' + Math.floor( ((autoclickerAmount * autoclickerCPS) + (grandmaAmount * grandmaCPS) + (farmAmount * farmCPS) + (mineAmount * mineCPS) + (factoryAmount * factoryCPS)) * 10) / 10
 }
 
 
@@ -109,7 +109,7 @@ function upgradeClickerClicked() {
         displayCookies()
 
         let displayUpgradeClicker = document.getElementById('display-upgrade-clicker')
-        displayUpgradeClicker.innerHTML = "Upgrade clicker cost: " + formatLargeNumber(upgradeClickerCost)
+        displayUpgradeClicker.innerHTML = "Hinta: " + formatLargeNumber(upgradeClickerCost)
     }
 }
 
@@ -127,7 +127,10 @@ function autoclickerClicked() {
         displayCookies()
 
         let displayAutoclicker = document.getElementById('display-autoclicker')
-        displayAutoclicker.innerHTML = 'Autoclicker cost: ' + formatLargeNumber(autoclickerCost)
+        displayAutoclicker.innerHTML = 'Hinta: ' + formatLargeNumber(autoclickerCost)
+
+        let displayAutoclickerAmount = document.getElementById('display-autoclicker-amount')
+        displayAutoclickerAmount.innerHTML = 'Level: ' + autoclickerAmount
 
         displayCPS()
     }
@@ -146,7 +149,10 @@ function grandmaClicked() {
         displayCookies()
 
         let displayGrandma = document.getElementById('display-grandma')
-        displayGrandma.innerHTML = 'Grandma cost: ' + formatLargeNumber(grandmaCost)
+        displayGrandma.innerHTML = 'Hinta: ' + formatLargeNumber(grandmaCost)
+
+        let displayGrandmaAmount = document.getElementById('display-grandma-amount')
+        displayGrandmaAmount.innerHTML = 'Level: ' + grandmaAmount
 
         displayCPS()
     }
@@ -165,7 +171,10 @@ function farmClicked() {
         displayCookies()
 
         let displayFarm = document.getElementById('display-farm')
-        displayFarm.innerHTML = 'Farm cost: ' + formatLargeNumber(farmCost)
+        displayFarm.innerHTML = 'Hinta: ' + formatLargeNumber(farmCost)
+
+        let displayFarmAmount = document.getElementById('display-farm-amount')
+        displayFarmAmount.innerHTML = 'Level: ' + farmAmount
 
         displayCPS()
     }
@@ -184,7 +193,10 @@ function mineClicked() {
         displayCookies()
 
         let displayMine = document.getElementById('display-mine')
-        displayMine.innerHTML = 'Mine cost: ' + formatLargeNumber(mineCost)
+        displayMine.innerHTML = 'Hinta: ' + formatLargeNumber(mineCost)
+
+        let displayMineAmount = document.getElementById('display-mine-amount')
+        displayMineAmount.innerHTML = 'Level: ' + mineAmount
 
         displayCPS()
     }
@@ -203,7 +215,10 @@ function factoryClicked() {
         displayCookies()
 
         let displayFactory = document.getElementById('display-factory')
-        displayFactory.innerHTML = 'Factory cost: ' + formatLargeNumber(factoryCost)
+        displayFactory.innerHTML = 'Hinta: ' + formatLargeNumber(factoryCost)
+
+        let displayFactoryAmount = document.getElementById('display-factory-amount')
+        displayFactoryAmount.innerHTML = 'Level: ' + factoryAmount
 
         displayCPS()
     }
