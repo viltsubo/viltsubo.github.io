@@ -232,3 +232,10 @@ function formatLargeNumber(number) {
 
     return chunks.join(' ');
 }
+
+
+// ChatGPT made a navbar
+function toggleNavbar() {
+    var navbarLinks = document.getElementById('navbarLinks');
+    navbarLinks.style.left = navbarLinks.style.left === '0%' ? '-100%' : '0%';
+}
