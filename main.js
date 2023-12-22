@@ -110,6 +110,9 @@ function upgradeClickerClicked() {
 
         let displayUpgradeClicker = document.getElementById('display-upgrade-clicker')
         displayUpgradeClicker.innerHTML = "Hinta: " + formatLargeNumber(upgradeClickerCost)
+
+        let displayUpgradeClickerMultiplier = document.getElementById('display-upgrade-clicker-multiplier')
+        displayUpgradeClickerMultiplier.innerHTML = multiplier + 'X lyönti'
     }
 }
 
