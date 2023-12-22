@@ -18,6 +18,8 @@ if (! localStorage.getItem('cookieCount')) {
 
     localStorage.setItem('factoryAmount', 0)
     localStorage.setItem('factoryCost', 130000)
+
+    localStorage.setItem('accessGranted', false)
 }
 
 
@@ -40,6 +42,8 @@ let mineCost = parseFloat(localStorage.getItem('mineCost'))
 let factoryAmount = parseFloat(localStorage.getItem('factoryAmount'))
 let factoryCost = parseFloat(localStorage.getItem('factoryCost'))
 
+let surpriseCost = 150000
+
 
 const autoclickerCPS = 0.1
 const grandmaCPS = 1
@@ -54,14 +58,13 @@ const audios = ['audio/SFX 1.mp3', 'audio/SFX 2.mp3', 'audio/SFX 3 ALL.mp3', 'au
 const audioNumber = 9
 
 
-
+// Handles when cookie is clicked
 function cookieClicked() {
+
+    // Adds multiplier amount of cookies to the total count, saves it and displays it
     cookieCount = cookieCount + multiplier
-
     localStorage.setItem('cookieCount', cookieCount)
-
     displayCookies()
-
 
     // 10% chance of getting a random img every click. Equal chance to get any img on the list
     // 10% chance of getting a random audio effect. Equal chance to get any audio on the list
@@ -71,23 +74,25 @@ function cookieClicked() {
         let cookieClickerImg = document.getElementById('cookie-clicker-img')
         cookieClickerImg.src = imgs[Math.floor(Math.random() * imgNumber)]
         
-        // Audio
-        let cookieClickerSurpriseAudio = document.getElementById('cookie-clicker-surprise-audio')
-        cookieClickerSurpriseAudio.src = audios[Math.floor(Math.random() * audioNumber)]
+        // Plays the surprise audio
+        let cookieClickerSurpriseAudio = new Audio(audios[Math.floor(Math.random() * audioNumber)])
         cookieClickerSurpriseAudio.play()
     }
 
-    let cookieClickerAudio = document.getElementById('cookie-clicker-audio')
+    // Plays audio every time cookie is clicked
+    let cookieClickerAudio = new Audio('audio/SFX 1.mp3')
     cookieClickerAudio.play()
 }
 
 
+// Updates the display of total cookies
 function displayCookies() {
     let displayCookies = document.getElementById('display-cookies')
     displayCookies.textContent = formatLargeNumber(Math.round(cookieCount))
 }
 
 
+// Updates the display of CPS
 function displayCPS() {
     let displayCPS = document.getElementById('display-cps')
 
@@ -96,23 +101,32 @@ function displayCPS() {
 }
 
 
+// Kaikki clicked funktiot menevät saman kaavan mukaan
 function upgradeClickerClicked() {
+    // Tarkista, onko tarpeeksi keksejä
     if (cookieCount >= upgradeClickerCost) {
 
+        // Tee matikka uusien keksien määräksi, uudeksi hinnaksi ja uudeksi tuotteiden määräksi
         cookieCount -= upgradeClickerCost
         multiplier *= 2
         upgradeClickerCost *= 10
 
+        // Tallenna uudet tiedot ja päivitä keksien määrä
         localStorage.setItem('cookieCount', cookieCount)
         localStorage.setItem('multiplier', multiplier)
         localStorage.setItem('upgradeClickerCost', upgradeClickerCost)
         displayCookies()
 
+        // Päivitä hinta ja tuotteiden lukumäärä kauppaan
         let displayUpgradeClicker = document.getElementById('display-upgrade-clicker')
         displayUpgradeClicker.innerHTML = "Hinta: " + formatLargeNumber(upgradeClickerCost)
 
         let displayUpgradeClickerMultiplier = document.getElementById('display-upgrade-clicker-multiplier')
         displayUpgradeClickerMultiplier.innerHTML = multiplier + 'X lyönti'
+
+        // Play a sound of purchase
+        let purchaseAudio = new Audio('audio/SFX BUY.mp3')
+        purchaseAudio.play()
     }
 }
 
@@ -134,6 +148,9 @@ function autoclickerClicked() {
 
         let displayAutoclickerAmount = document.getElementById('display-autoclicker-amount')
         displayAutoclickerAmount.innerHTML = 'Level: ' + autoclickerAmount
+
+        let purchaseAudio = new Audio('audio/SFX BUY.mp3')
+        purchaseAudio.play()
 
         displayCPS()
     }
@@ -157,6 +174,9 @@ function grandmaClicked() {
         let displayGrandmaAmount = document.getElementById('display-grandma-amount')
         displayGrandmaAmount.innerHTML = 'Level: ' + grandmaAmount
 
+        let purchaseAudio = new Audio('audio/SFX BUY.mp3')
+        purchaseAudio.play()
+
         displayCPS()
     }
 }
@@ -178,6 +198,9 @@ function farmClicked() {
 
         let displayFarmAmount = document.getElementById('display-farm-amount')
         displayFarmAmount.innerHTML = 'Level: ' + farmAmount
+
+        let purchaseAudio = new Audio('audio/SFX BUY.mp3')
+        purchaseAudio.play()
 
         displayCPS()
     }
@@ -201,6 +224,9 @@ function mineClicked() {
         let displayMineAmount = document.getElementById('display-mine-amount')
         displayMineAmount.innerHTML = 'Level: ' + mineAmount
 
+        let purchaseAudio = new Audio('audio/SFX BUY.mp3')
+        purchaseAudio.play()
+
         displayCPS()
     }
 }
@@ -223,7 +249,44 @@ function factoryClicked() {
         let displayFactoryAmount = document.getElementById('display-factory-amount')
         displayFactoryAmount.innerHTML = 'Level: ' + factoryAmount
 
+        let purchaseAudio = new Audio('audio/SFX BUY.mp3')
+        purchaseAudio.play()
+
         displayCPS()
+    }
+}
+
+
+// Handles the surprise button click
+function surpriseClicked() {
+    let aG = localStorage.getItem('accessGranted')
+    if (aG) {
+        // Play a celebratory sound
+        let celebratoryAudio = new Audio('audio/SFX SURPRISE.mp3')
+        celebratoryAudio.play()
+
+        // Time for the audio to play
+        setTimeout(function() {
+            window.location.href = "/slideshow.html"
+        }, 6000)
+
+    } else if (cookieCount >= surpriseCost) {
+        // Check if there is enough cookies (above), do the math and save the values
+        cookieCount -= surpriseCost
+        accessGranted = true
+
+        localStorage.setItem('cookieCount', cookieCount)
+        localStorage.setItem('accessGranted', accessGranted)
+        displayCookies()
+
+        // Play a celebratory sound
+        let celebratoryAudio = new Audio('audio/SFX SURPRISE.mp3')
+        celebratoryAudio.play()
+
+        // Time for the audio to play
+        setTimeout(function() {
+            window.location.href = "/slideshow.html"
+        }, 6000)
     }
 }
 
@@ -233,6 +296,7 @@ setInterval(function() {
     // Counts the CPS (tried in separated function but got errors)
     cookieCount = cookieCount + (autoclickerAmount * autoclickerCPS) + (grandmaAmount * grandmaCPS) + (farmAmount * farmCPS) + (mineAmount * mineCPS) + (factoryAmount * factoryCPS)
 
+    // Saves the values and updates the view
     localStorage.setItem('cookieCount', cookieCount)
     displayCookies()
     displayCPS()

@@ -61,6 +61,7 @@
     z-index: 10;
 }
 
+
 #cookie-clicker:active {
     transform: scale(1.05);
 }
