@@ -17,7 +17,7 @@ if (! localStorage.getItem('cookieCount')) {
     localStorage.setItem('mineCost', 12000)
 
     localStorage.setItem('factoryAmount', 0)
-    localStorage.setItem('factoryCost', 130000)
+    localStorage.setItem('factoryCost', 35000)
 
     localStorage.setItem('accessGranted', 0)
 }
