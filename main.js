@@ -45,10 +45,10 @@ let factoryCost = parseFloat(localStorage.getItem('factoryCost'))
 let surpriseCost = 150000
 
 
-const autoclickerCPS = 0.1
-const grandmaCPS = 1
-const farmCPS = 8
-const mineCPS = 47
+const autoclickerCPS = 0.5
+const grandmaCPS = 2
+const farmCPS = 11
+const mineCPS = 62
 const factoryCPS = 260
 
 
