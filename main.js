@@ -19,7 +19,7 @@ if (! localStorage.getItem('cookieCount')) {
     localStorage.setItem('factoryAmount', 0)
     localStorage.setItem('factoryCost', 130000)
 
-    localStorage.setItem('accessGranted', false)
+    localStorage.setItem('accessGranted', 0)
 }
 
 
@@ -259,8 +259,8 @@ function factoryClicked() {
 
 // Handles the surprise button click
 function surpriseClicked() {
-    let aG = localStorage.getItem('accessGranted')
-    if (aG) {
+    let aG = parseFloat(localStorage.getItem('accessGranted'))
+    if (aG > 5) {
         // Play a celebratory sound
         let celebratoryAudio = new Audio('audio/SFX SURPRISE.mp3')
         celebratoryAudio.play()
@@ -273,10 +273,9 @@ function surpriseClicked() {
     } else if (cookieCount >= surpriseCost) {
         // Check if there is enough cookies (above), do the math and save the values
         cookieCount -= surpriseCost
-        accessGranted = true
 
         localStorage.setItem('cookieCount', cookieCount)
-        localStorage.setItem('accessGranted', accessGranted)
+        localStorage.setItem('accessGranted', 10)
         displayCookies()
 
         // Play a celebratory sound
